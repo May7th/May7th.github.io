@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[[leetcode]Array Partition]]></title>
+      <url>%2F2017%2F05%2F08%2Fleetcode-Array-Partition%20copy%2F</url>
+      <content type="text"><![CDATA[Array Partition I题目大意： 给定一个长度为2n的数组，将它分为n个小组，每组两个元素。求出每组中最小值和，返回其中最大的和sum。 Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible. Example 1: 1234Input: [1,4,3,2]Output: 4Explanation: n is 2, and the maximum sum of pairs is 4. Note: n is a positive integer, which is in the range of [1, 10000]. All the integers in the array will be in the range of [-10000, 10000]. 解题思路： 先排序，将相邻两个数分为一组，每组较小数都在左边，求和即可 算法分析： 假设对于每一对i，bi &gt;= ai。 定义Sm = min（a1，b1）+ min（a2，b2）+ … + min（an，bn）。最大的Sm是这个问题的答案。由于bi &gt;= ai，Sm = a1 + a2 + … + an。 定义Sa = a1 + b1 + a2 + b2 + … + an + bn。对于给定的输入，Sa是常数。 定义di = | ai - bi |。由于bi &gt;= ai，di = bi-ai, bi = ai+di。 定义Sd = d1 + d2 + … + dn。 所以Sa = a1 + (a1 + d1) + a2 + (a2 + d2) + … + an + (an + di) = 2Sm + Sd , 所以Sm =（Sa-Sd）/ 2。为得到最大Sm，给定Sa为常数，需要使Sd尽可能小。 所以这个问题就是在数组中找到使di（ai和bi之间的距离）的和尽可能小的对。显然，相邻元素的这些距离之和是最小的。 代码如下： 12345678910public class Solution &#123; public int arrayPairSum(int[] nums) &#123; Arrays.sort(nums); int num = 0; for(int i = 0;i &lt; nums.length;i+=2)&#123; num +=nums[i]; &#125; return num; &#125;&#125;]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Maven]]></title>
       <url>%2F2017%2F04%2F25%2FMaven%2F</url>
       <content type="text"><![CDATA[Maven简介Maven是什么？Apache Maven Project — Apache的优秀开源项目， 基于项目对象模型，可以通过一小段描述信息来管理项目的构建、报告和文档的软件项目管理工具。 Maven能干什么？ 用Maven可以方便的创建项目，基于archetype可以创建多种类型的java项目。 Maven仓库对jar包（artifact）进行统一管理，避免jar文件的重复拷贝和版本冲突。 团队开发，Maven管理项目的RELEASSE和SNAPSHOT版本，方便多模块的项目中，各个模块之间的快速集成。 Maven常见命令 mvn命令 含义 -v 查看Maven版本 compile 编译项目 test 测试项目 package 打包项目 clean 删除target install 将jar包安装到本地仓库]]></content>
