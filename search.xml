@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[Maven]]></title>
       <url>%2F2017%2F04%2F25%2FMaven%2F</url>
-      <content type="text"><![CDATA[Maven简介Maven是什么？Apache Maven Project — Apache的优秀开源项目， 基于项目对象模型，可以通过一小段描述信息来管理项目的构建、报告和文档的软件项目管理工具。 Maven能干什么？ 用Maven可以方便的创建项目，基于archetype可以创建多种类型的java项目。 Maven仓库对jar包（artifact）进行统一管理，避免jar文件的重复拷贝和版本冲突。 团队开发，Maven管理项目的RELEASSE和SNAPSHOT版本，方便多模块的项目中，各个模块之间的快速集成。 Maven常见命令 mvn命令 含义 -v 查看Maven版本 compile 编译项目 test 测试项目 package 打包项目 clean 删除target install 将jar包安装到本地仓库]]></content>
+      <content type="text"><![CDATA[Maven是什么？Apache Maven Project — Apache的优秀开源项目， 基于项目对象模型，可以通过一小段描述信息来管理项目的构建、报告和文档的软件项目管理工具。 Maven能干什么？ 用Maven可以方便的创建项目，基于archetype可以创建多种类型的java项目。 Maven仓库对jar包（artifact）进行统一管理，避免jar文件的重复拷贝和版本冲突。 团队开发，Maven管理项目的RELEASSE和SNAPSHOT版本，方便多模块的项目中，各个模块之间的快速集成。 Maven常见命令 mvn命令 含义 -v 查看Maven版本 compile 编译项目 test 测试项目 package 打包项目 clean 删除target install 将jar包安装到本地仓库]]></content>
     </entry>
 
     
