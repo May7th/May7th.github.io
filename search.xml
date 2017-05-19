@@ -3,9 +3,9 @@
   
     
     <entry>
-      <title><![CDATA[Reshape the Matrix]]></title>
-      <url>%2F2017%2F05%2F11%2FReshape-the-Matrix%20copy%2F</url>
-      <content type="text"><![CDATA[Reshape the Matrix题目大意： 重塑数组，将给定的二维数组添加到横纵坐标（r,c)确定的新数组中。如果可以正好全部添加到新数组则返回新数组，否则返回原数组。 In MATLAB, there is a very useful function called ‘reshape’, which can reshape a matrix into a new one with different size but keep its original data. You’re given a matrix represented by a two-dimensional array, and two positive integers r and c representing the row number and columnnumber of the wanted reshaped matrix, respectively. The reshaped matrix need to be filled with all the elements of the original matrix in the same row-traversing order as they were. If the ‘reshape’ operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix. Example 1: 123456789Input: nums = [[1,2], [3,4]]r = 1, c = 4Output: [[1,2,3,4]]Explanation:The row-traversing of nums is [1,2,3,4]. The new reshaped matrix is a 1 * 4 matrix, fill it row by row by using the previous list. Example 2: 12345678910Input: nums = [[1,2], [3,4]]r = 2, c = 4Output: [[1,2], [3,4]]Explanation:There is no way to reshape a 2 * 2 matrix to a 2 * 4 matrix. So output the original matrix. 解题思路： 判断原数组元素是否能全部正好加入新数组，不能则返回原数组。如果能加入则遍历原数组将元素添加新数组中。 代码如下： 1234567891011121314151617181920212223public class Solution &#123; public int[][] matrixReshape(int[][] nums, int r, int c) &#123; if(nums.length*nums[0].length != r*c)&#123; return nums; &#125;else&#123; int[][] newNums = new int[r][c]; int row = 0; int col = 0; for(int i = 0; i &lt; nums.length;i++)&#123; for(int j = 0; j &lt; nums[0].length; j++ )&#123; newNums[row][col] = nums[i][j]; col++; if(col == c) &#123; col = 0; row++; &#125; &#125; &#125; return newNums; &#125; &#125;&#125;]]></content>
+      <title><![CDATA[[算法和数据结构]O(n^2)排序算法]]></title>
+      <url>%2F2017%2F05%2F17%2F%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-O%EF%BC%88n-2%EF%BC%89%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%20%2F</url>
+      <content type="text"><![CDATA[选择排序(Selection Sort) 先找到起始数组中最小的元素，将它和位置i=0交换，接着继续在剩余的数组中寻找最小和位置i=1交换，如此循环，直到找到第二大的元素，交换后，整个数组排序。 java代码实现： 12345678910111213141516public class SelectionSort &#123; public SelectionSort(Comparable[] arr) &#123; for (int i = 0; i &lt; arr.length; i++) &#123; int minIndex = i; for (int j = i; j &lt; arr.length ; j++) &#123; if (arr[minIndex].compareTo(arr[j]) &gt;0)&#123; minIndex = j; &#125; &#125; Comparable temp = arr[i]; arr[i] = arr[minIndex]; arr[minIndex] = temp; &#125; &#125; Python实现： 1234567891011def selection_sort(lists): count = len(lists) for i in range(0, count): min = i for j in range(i + 1, count): if lists[min] &gt; lists[j]: min = j temp = lists[min] lists[min] = lists[i] lists[i] = temp return lists 插入排序(Insertion Sort) 依次遍历数组元素，从i=1位置和前一位比较，将较小的交换至前一位。递归的向前比较大小，将较小的和前一位交换，直到最后一位。 12345678910111213public class InsertionSort&#123; public InsertionSort(Comparable[] arr) &#123; for (int i = 1; i &lt; arr.length; i++) &#123; Comparable e = arr[i]; int j; for (j = i; j &gt;0 &amp;&amp; arr[j-1].compareTo(e) &gt; 0; j--) &#123; arr[j] = arr[j-1]; &#125; arr[j] = e; &#125; &#125;&#125;]]></content>
     </entry>
 
     
@@ -20,13 +20,6 @@
       <title><![CDATA[[leetcode]Array Partition]]></title>
       <url>%2F2017%2F05%2F08%2Fleetcode-Array-Partition%20copy%2F</url>
       <content type="text"><![CDATA[Array Partition I题目大意： 给定一个长度为2n的数组，将它分为n个小组，每组两个元素。求出每组中最小值和，返回其中最大的和sum。 Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible. Example 1: 1234Input: [1,4,3,2]Output: 4Explanation: n is 2, and the maximum sum of pairs is 4. Note: n is a positive integer, which is in the range of [1, 10000]. All the integers in the array will be in the range of [-10000, 10000]. 解题思路： 先排序，将相邻两个数分为一组，每组较小数都在左边，求和即可 算法分析： 假设对于每一对i，bi &gt;= ai。 定义Sm = min（a1，b1）+ min（a2，b2）+ … + min（an，bn）。最大的Sm是这个问题的答案。由于bi &gt;= ai，Sm = a1 + a2 + … + an。 定义Sa = a1 + b1 + a2 + b2 + … + an + bn。对于给定的输入，Sa是常数。 定义di = | ai - bi |。由于bi &gt;= ai，di = bi-ai, bi = ai+di。 定义Sd = d1 + d2 + … + dn。 所以Sa = a1 + (a1 + d1) + a2 + (a2 + d2) + … + an + (an + di) = 2Sm + Sd , 所以Sm =（Sa-Sd）/ 2。为得到最大Sm，给定Sa为常数，需要使Sd尽可能小。 所以这个问题就是在数组中找到使di（ai和bi之间的距离）的和尽可能小的对。显然，相邻元素的这些距离之和是最小的。 代码如下： 12345678910public class Solution &#123; public int arrayPairSum(int[] nums) &#123; Arrays.sort(nums); int num = 0; for(int i = 0;i &lt; nums.length;i+=2)&#123; num +=nums[i]; &#125; return num; &#125;&#125;]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[Maven]]></title>
-      <url>%2F2017%2F04%2F25%2FMaven%2F</url>
-      <content type="text"><![CDATA[Maven是什么？Apache Maven Project — Apache的优秀开源项目， 基于项目对象模型，可以通过一小段描述信息来管理项目的构建、报告和文档的软件项目管理工具。 Maven能干什么？ 用Maven可以方便的创建项目，基于archetype可以创建多种类型的java项目。 Maven仓库对jar包（artifact）进行统一管理，避免jar文件的重复拷贝和版本冲突。 团队开发，Maven管理项目的RELEASSE和SNAPSHOT版本，方便多模块的项目中，各个模块之间的快速集成。 Maven常见命令 mvn命令 含义 -v 查看Maven版本 compile 编译项目 test 测试项目 package 打包项目 clean 删除target install 将jar包安装到本地仓库]]></content>
     </entry>
 
     
